@@ -2,7 +2,7 @@
 """Documentation"""
 from typing import Union
 
-Num = Union[int, floa]
+Num = Union[int, float]
 
 def to_kv(k: str, v: Num) -> tuple:
     """Documentation"""
