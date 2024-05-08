@@ -4,5 +4,5 @@
 
 def update_topics(mongo_collection, name, topics):
     """Update a document in Python"""
-    mongo_collection.update({"name": name}, {"$set": {"topics": topics}},{multi: true})
+    mongo_collection.update_name({"name": name}, {"$set": {"topics": topics}})
     return mongo_collection
