@@ -3,6 +3,7 @@
 
 
 def schools_by_topic(mongo_collection, topic):
+    """Documentation"""
     return [collection for collection in mongo_collection.find(
         {"topics": topic}
         )]
