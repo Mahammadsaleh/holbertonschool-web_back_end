@@ -43,21 +43,19 @@ class Server:
 
         dataset_len = len(self.dataset())
         assert 0 <= index < dataset_len
-
         indexed_data = self.indexed_dataset()
         data = []
-
-        index = min(index, dataset_len - 1)
-
-        for i in range(index, index + page_size):
+        size = index + page_size
+        i = index
+        while i < size:
             if i in indexed_data:
                 data.append(indexed_data[i])
-
-        next_index = min(index + page_size, dataset_len)
-
+            else:
+                size = size + 1
+            i = i + 1
         return {
-            "index": index,
-            "next_index": next_index,
-            "page_size": page_size,
-            "data": data
+             "index": index,
+             "next_index": index + page_size,
+             "page_size": page_size,
+             "data": data
         }
