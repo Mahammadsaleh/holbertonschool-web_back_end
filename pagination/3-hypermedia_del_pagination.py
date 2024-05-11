@@ -48,6 +48,9 @@ class Server:
         while len(data) < page_size and i < dataset_len:
             if i in indexed_data:
                 data.append(indexed_data[i])
+            else:
+                # If data for the current index is missing, adjust next_index and continue
+                next_index = i + 1
             i = i + 1
         return {
              "index": index,
