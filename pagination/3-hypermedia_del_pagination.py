@@ -40,18 +40,23 @@ class Server:
         return self.__indexed_dataset
 
     def get_hyper_index(self, index: int = None, page_size: int = 10) -> Dict:
-        """Return a dictionary with the following key-value pairs
-        """
-        assert 0 <= index < len(self.dataset())
+
+        dataset_len = len(self.dataset())
+        assert 0 <= index < dataset_len, "Invalid index"
+        indexed_data = self.indexed_dataset()
         start = index if index is not None else 0
-        next_index = start + page_size
-        data = self.dataset()[start: next_index]
-        if not self.__indexed_dataset.get(index):
-            next_index += 1
-            data = list(self.indexed_dataset().values())[start: next_index - 1]
+        data = []
+        size = start + page_size
+        i = index
+        while i < size:
+            if i in indexed_data:
+                data.append(indexed_data[i])
+            else:
+                size = size + 1
+            i = i + 1
         return {
-            "index": start,
-            "next_index": next_index,
-            "page_size": page_size,
-            "data": data,
-            }
+             "index": index,
+             "next_index": size,
+             "page_size": len(data),
+             "data": data
+        }
