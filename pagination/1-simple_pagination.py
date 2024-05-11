@@ -2,7 +2,7 @@
 """Simple pagination"""
 import csv
 import math
-from typing import List
+from typing import List, Tuple
 index_range = __import__("0-simple_helper_function").index_range
 
 
@@ -35,3 +35,13 @@ class Server:
             return self.dataset()[start:end]
         except IndexError:
             return []
+
+
+def index_range(page: int, page_size: int) -> Tuple[int, int]:
+    """
+    index_range - calculates a start index and an end index
+    @page: number of page
+    @page_size: size of page
+    Return: tuple of size two containing a start index and an end index
+    """
+    return ((page - 1) * page_size, page * page_size)
