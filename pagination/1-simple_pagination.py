@@ -5,6 +5,7 @@ import math
 from typing import List
 index_range = __import__("0-simple_helper_function").index_range
 
+
 class Server:
     """Server class to paginate a database of popular baby names.
     """
@@ -25,8 +26,12 @@ class Server:
         return self.__dataset
 
     def get_page(self, page: int = 1, page_size: int = 10) -> List[List]:
-        assert isinstance(page, int) and isinstance(page_size, int), "Page and page_size must be integers"
-        assert page > 0 and page_size > 0, "Page and page_size must be positive"
-        self.dataset()
+        assert isinstance(page, int) and isinstance(page_size, int), "Page" + \
+            " and page_size must be integers"
+        assert page > 0 and page_size > 0, "Page and" + \
+            "page_size must be positive"
         start, end = index_range(page, page_size)
-        return self.__dataset[start:end]
+        try:
+            return self.dataset()[start:end]
+        except IndexError:
+            return []
