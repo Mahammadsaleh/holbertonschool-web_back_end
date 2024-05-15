@@ -10,7 +10,7 @@ export default class Pricing {
         return this._amount
     }
     set amount(newAmount){
-        if (typeof newAmount !== "Number"){
+        if (typeof newAmount !== "string"){
             throw new TypeError("must be number")
         }
         this._amount = newAmount
@@ -19,7 +19,7 @@ export default class Pricing {
         return this._currency
     }
     set currency(newCurrency){
-        if (typeof newCurrency !== "Currency"){
+        if (typeof newCurrency !== "string"){
             throw new TypeError("must be Currency")
         }
         this._currency = newCurrency
