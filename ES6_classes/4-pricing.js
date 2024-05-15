@@ -10,7 +10,7 @@ export default class Pricing {
         return this._amount
     }
     set amount(newAmount){
-        if (typeof newAmount !== "string"){
+        if (typeof newAmount !== "number"){
             throw new TypeError("must be number")
         }
         this._amount = newAmount
@@ -19,7 +19,7 @@ export default class Pricing {
         return this._currency
     }
     set currency(newCurrency){
-        if (typeof newCurrency !== "string"){
+        if (typeof newCurrency !== "currency"){
             throw new TypeError("must be Currency")
         }
         this._currency = newCurrency
@@ -28,6 +28,6 @@ export default class Pricing {
         return `${this._amount} ${this._currency._name} (${this._currency._code})`
     }
     static convertPrice(amount, conversionRate){
-        return this._amount * this._currency
+        return amount * conversionRate
     }
 }
