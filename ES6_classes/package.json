@@ -256,7 +256,9 @@
   },
   "scripts": {
     "test": "jest",
-    "dev": "node"
+    "dev": "node",
+    "lint": "eslint .",
+    "full-test": "npm run lint && npm run test"
   },
   "type": "module"
 }
