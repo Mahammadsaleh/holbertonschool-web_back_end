@@ -1,4 +1,4 @@
-/*disabled eslint*/
+/*eslint-disable*/
 class Car{
     constructor(brand, motor, color){
         this._brand = brand;
